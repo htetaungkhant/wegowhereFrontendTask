@@ -6,10 +6,11 @@ export const defaultStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
-    padding: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
   },
-  header: {
-    fontSize: 40,
+  headerTitleStyle: {
+    fontSize: 17,
     fontWeight: '700',
   },
   block: {

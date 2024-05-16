@@ -1,0 +1,38 @@
+import FeatherIcons from '@expo/vector-icons/Feather';
+import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+
+import Colors from "@/constants/colors";
+import { AddCardButtonProps, LinkButtonProps } from "@/types";
+
+export const LinkButton: React.FC<LinkButtonProps> = ({ title, href }) => {
+    const navigation = useNavigation();
+
+    return (
+        <TouchableOpacity onPress={() => navigation.navigate(href as never)}>
+            <Text style={styles.linkButton}>{title}</Text>
+        </TouchableOpacity>
+    );
+}
+
+export const AddCardButton: React.FC<AddCardButtonProps> = ({}) => {
+    const navigation = useNavigation();
+
+    return (
+        <TouchableOpacity onPress={() => navigation.navigate('AddCard' as never)}>
+            <Text style={styles.addCardButton}>
+                <FeatherIcons name="plus" size={28} />
+            </Text>
+        </TouchableOpacity>
+    );
+}
+
+const styles = StyleSheet.create({
+    linkButton: {
+        fontSize: 18,
+        fontWeight: '500',
+        color: Colors.primary
+    },
+    addCardButton: {}
+})

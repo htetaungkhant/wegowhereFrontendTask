@@ -6,3 +6,10 @@ export type AppDispatch = typeof store.dispatch
 export interface AppSliceInitialState {
 	appName: string
 }
+
+export interface LinkButtonProps {
+	title: string
+	href: string
+}
+
+export interface AddCardButtonProps {}
