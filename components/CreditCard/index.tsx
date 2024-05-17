@@ -7,7 +7,8 @@ import { CreditCardProps } from "@/types";
 import { FourDotsIcon } from '../FourDotsIcon';
 
 export const CreditCard: React.FC<CreditCardProps> = ({ cardNumber, cardHolder, expiryDate, cvv }) => {
-    const { state, last4Digits } = useCreditCardNumberChecker(cardNumber);
+    const { check } = useCreditCardNumberChecker();
+    const { state, last4Digits } = check(cardNumber);
 
     if (state === 'INVALID') {
         return null;
