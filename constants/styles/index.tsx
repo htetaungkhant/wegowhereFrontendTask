@@ -14,10 +14,17 @@ export const defaultStyles = StyleSheet.create({
     fontWeight: '700',
   },
   block: {
-    marginHorizontal: 20,
-    padding: 14,
-    backgroundColor: '#fff',
-    borderRadius: 16,
-    gap: 20,
+    paddingVertical: 2,
+    paddingHorizontal: 6,
+    rowGap: 8,
+  },
+  input: {
+    margin: 0,
+    borderWidth: 1.5,
+    borderRadius: 4,
+    borderColor: Colors.lightGray,
+    padding: 16,
+    fontSize: 16,
+    fontWeight: '500',
   },
 });

@@ -19,7 +19,9 @@ export interface LinkButtonProps {
 	href: string
 }
 
-export interface AddCardButtonProps {}
+export interface HeaderAddCardButtonProps {}
+
+export interface HeaderGoBackButtonProps {}
 
 export interface CreditCardProps {
 	cardNumber: string
@@ -35,4 +37,9 @@ export interface FlatListItemSeparatorProps {
 export interface FourDotsIconProps {
 	height?: number
 	size?: number
+}
+
+export interface CreditCardInputProps {
+	value: string
+	onChangeText: (text: string) => void
 }
