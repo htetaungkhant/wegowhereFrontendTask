@@ -1,9 +1,38 @@
-import { Text, View } from 'react-native'
+import { AntDesign } from '@expo/vector-icons';
+import { StyleSheet, Text, View } from 'react-native';
+
+import { LinkButton } from '@/components/Button';
+import colors from '@/constants/colors';
 
 export function FailScreen() {
     return (
-        <View>
-            <Text>Fail</Text>
+        <View style={styles.container}>
+            <View style={styles.innerContainer}>
+                <AntDesign name="closecircle" size={32} color={colors.errorRed} />
+                <Text style={styles.failLabel}>Fail</Text>
+            </View>
+            <LinkButton title="Go back to card list" href="CardList" />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        rowGap: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.background
+    },
+    innerContainer: {
+        marginBottom: 28,
+        flexDirection: 'row',
+        alignItems: 'center',
+        columnGap: 8,
+    },
+    failLabel: {
+        fontSize: 32,
+        fontWeight: '500',
+        color: "#000",
+    },  
+})
