@@ -8,6 +8,9 @@ export type CreditCardTypes = 'Visa' | 'Mastercard' | 'JCB' | 'INVALID'
 
 export interface AppSliceInitialState {
 	appName: string
+}
+
+export interface CardListSliceInitialState {
 	cardList: CreditCardProps[]
 }
 
