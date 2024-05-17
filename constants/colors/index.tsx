@@ -6,4 +6,5 @@ export default {
     gray: '#CDCDCD',
     lightGray: '#E6E3E6',
     darkGray: '#808080',
+    errorRed: '#FF0000',
   };

@@ -1,3 +1,4 @@
+import { GestureResponderEvent } from 'react-native'
 
 import { store } from '@/store'
 
@@ -12,6 +13,19 @@ export interface AppSliceInitialState {
 
 export interface CardListSliceInitialState {
 	cardList: CreditCardProps[]
+}
+
+export interface CustomButtonProps {
+	title: string
+	onPress?: ((event: GestureResponderEvent) => void)
+	width?: number
+	height?: number
+	fontSize?: number
+	borderRadius?: number
+	paddingVertical?: number
+	paddingHorizontal?: number
+	backgroundColor?: string
+	color?: string
 }
 
 export interface LinkButtonProps {

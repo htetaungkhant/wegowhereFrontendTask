@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
-import { CardListSliceInitialState } from '@/types'
+import { CardListSliceInitialState, CreditCardProps } from '@/types'
 
 const initialState: CardListSliceInitialState = {
 	cardList: [
@@ -32,10 +32,13 @@ export const cardListSlice = createSlice({
 	reducers: {
 		setCardList: (state, action: PayloadAction<CardListSliceInitialState['cardList']>) => {
 			state.cardList = action.payload
+		},
+		addCardIntoList: (state, action: PayloadAction<CreditCardProps>) => {
+			state.cardList.push(action.payload)
 		}
 	},
 })
 
-export const { setCardList } = cardListSlice.actions
+export const { setCardList, addCardIntoList } = cardListSlice.actions
 
 export default cardListSlice.reducer
