@@ -2,32 +2,39 @@ import React, { useState } from "react";
 import { Image, NativeSyntheticEvent, StyleSheet, TextInput, TextInputChangeEventData, View } from "react-native";
 
 import Colors from "@/constants/colors";
+import { useIsNumericChecker } from "@/hooks/useIsNumericChecker";
 import { CreditCardInputProps, CreditCardTypes } from "@/types";
 
 export const CreditCardInput: React.FC<CreditCardInputProps> = ({ value, onChangeText }) => {
     const [cardType, setCardType] = useState<CreditCardTypes>('INVALID');
 
+    const { isNumeric } = useIsNumericChecker();
+
     const onChange: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void = (e) => {
         // check to accept only numbers
         const input = e.nativeEvent.text;
         const formattedInput = input.replace(/\D/g, '');
-        if (formattedInput.length === 0) {
+        const { result } = isNumeric(formattedInput);
+        if (!result) return;
+        else if (formattedInput.length === 0) {
             setCardType('INVALID');
             onChangeText('');
             return;
         }
         
-        if(formattedInput[0] === '4') {
-            setCardType('Visa');
-        }
-        else if(formattedInput[0] === '5') {
-            setCardType('Mastercard');
-        }
-        else if(formattedInput[0] === '3') {
-            setCardType('JCB');
-        }
-        else {
-            setCardType('INVALID');
+        switch(formattedInput[0]) {
+            case '4':
+                setCardType('Visa');
+                break;
+            case '5':
+                setCardType('Mastercard');
+                break;
+            case '3':
+                setCardType('JCB');
+                break;
+            default:
+                setCardType('INVALID');
+                break;
         }
 
         // Format the card number
