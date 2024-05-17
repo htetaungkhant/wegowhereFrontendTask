@@ -5,7 +5,36 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import Colors from "@/constants/colors";
-import { HeaderAddCardButtonProps, HeaderGoBackButtonProps, LinkButtonProps } from "@/types";
+import { CustomButtonProps, HeaderAddCardButtonProps, HeaderGoBackButtonProps, LinkButtonProps } from "@/types";
+
+export const CustomButton: React.FC<CustomButtonProps> = ({ 
+    title, 
+    onPress, 
+    width, 
+    height, 
+    fontSize = 16,
+    borderRadius = 28,
+    paddingHorizontal = 16, 
+    paddingVertical = 16, 
+    backgroundColor= Colors.primary,
+    color = '#fff',
+}) => {
+    return (
+        <TouchableOpacity onPress={onPress}>
+            <Text style={{ 
+                ...styles.customButton, 
+                width, 
+                height, 
+                fontSize, 
+                borderRadius, 
+                paddingHorizontal, 
+                paddingVertical, 
+                color, 
+                backgroundColor 
+            }}>{title}</Text>
+        </TouchableOpacity>
+    );
+}
 
 export const LinkButton: React.FC<LinkButtonProps> = ({ title, href }) => {
     const navigation = useNavigation();
@@ -43,6 +72,15 @@ export const HeaderGoBackButton: React.FC<HeaderGoBackButtonProps> = ({}) => {
 }
 
 const styles = StyleSheet.create({
+    customButton: {
+        padding: 16,
+        borderRadius: 28,
+        overflow: 'hidden',
+        textAlign: 'center',
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: '700',
+    },
     linkButton: {
         fontSize: 18,
         fontWeight: '500',
