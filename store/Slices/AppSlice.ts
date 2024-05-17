@@ -5,6 +5,7 @@ import { AppSliceInitialState } from '@/types'
 
 const initialState: AppSliceInitialState = {
 	appName: 'WegowhereFrontendTask',
+	cardList: [],
 }
 
 export const appSlice = createSlice({
@@ -14,6 +15,9 @@ export const appSlice = createSlice({
 		setAppName: (state, action: PayloadAction<string>) => {
 			state.appName = action.payload
 		},
+		setCardList: (state, action: PayloadAction<AppSliceInitialState['cardList']>) => {
+			state.cardList = action.payload
+		}
 	},
 })
 

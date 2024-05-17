@@ -1,7 +1,8 @@
 import { CreditCardTypes } from "@/types";
 
-export const useCreditCardNumberChecker = (cardNumber: string): { state: CreditCardTypes } => {
+export const useCreditCardNumberChecker = (cardNumber: string): { state: CreditCardTypes, last4Digits: string } => {
     let cardState: CreditCardTypes = "INVALID";
+    let last4Digits: string = "";
 
     const cardNumberWithoutSpaces = cardNumber.replace(/\s/g, '');
     const cardNumberArray = cardNumberWithoutSpaces.split('').map(Number);
@@ -37,12 +38,15 @@ export const useCreditCardNumberChecker = (cardNumber: string): { state: CreditC
         if(sumOfDigitsWithLastDigit % 10 === 0) {
             if(cardNumberArray[0] === 4) {
                 cardState = "Visa";
+                last4Digits = cardNumber.slice(-4);
             }
             else if(cardNumberArray[0] === 5) {
                 cardState = "Mastercard";
+                last4Digits = cardNumber.slice(-4);
             }
             else if(cardNumberArray[0] === 3) {
                 cardState = "JCB";
+                last4Digits = cardNumber.slice(-4);
             }
             else {
                 cardState = "INVALID";
@@ -53,5 +57,5 @@ export const useCreditCardNumberChecker = (cardNumber: string): { state: CreditC
         }
     }
 
-    return { state: cardState };
+    return { state: cardState, last4Digits };
 };
