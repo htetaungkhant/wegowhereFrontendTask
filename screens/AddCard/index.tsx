@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import { BlurView } from 'expo-blur';
 import { useState } from 'react';
 import { GestureResponderEvent, Image, Modal, NativeSyntheticEvent, ScrollView, StyleSheet, Text, TextInput, TextInputChangeEventData, View } from 'react-native';
 import { useDispatch } from 'react-redux';
@@ -133,7 +134,7 @@ export function AddCardScreen() {
                     setInvalidCardModalVisible(false);
                 }}
             >
-                <View style={styles.centeredView}>
+                <BlurView intensity={20} experimentalBlurMethod='dimezisBlurView' style={styles.centeredView}>
                     <View style={{ ...styles.modalView }}>
                         <Text style={styles.errorTitle}>{errorTitle}</Text>
                         <Text style={styles.errorLabel}>{errorLabel}</Text>
@@ -145,7 +146,7 @@ export function AddCardScreen() {
                             borderRadius={12}
                         />
                     </View>
-                </View>
+                </BlurView>
             </Modal>
         </>
     )
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        // backgroundColor: 'rgba(255, 255, 255, 0.8)',
     },
     modalView: {
         width: '85%',
