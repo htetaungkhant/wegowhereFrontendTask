@@ -8,7 +8,7 @@ import { CustomButton } from '@/components/Button';
 import { CreditCardInput } from '@/components/CreditCardInput';
 import Colors from '@/constants/colors';
 import { defaultStyles } from '@/constants/styles';
-import { useCreditCardNumberChecker } from '@/hooks/useCreditCardNumberChecker';
+import { useCreditCardNumberChecker } from '@/hooks/useCreditCardChecker';
 import { useIsNumericChecker } from '@/hooks/useIsNumericChecker';
 import { addCardIntoList } from '@/store';
 

@@ -1,11 +1,11 @@
 import { CreditCardTypes } from "@/types";
 
-interface checkFnType {
+interface checkNumberFnType {
     (cardNumber: string): { state: CreditCardTypes, last4Digits: string }
 }
 
-export const useCreditCardNumberChecker = (): { check: checkFnType } => {
-    const check: checkFnType = (cardNumber: string) => {
+export const useCreditCardNumberChecker = (): { check: checkNumberFnType } => {
+    const check: checkNumberFnType = (cardNumber: string) => {
         let cardState: CreditCardTypes = "INVALID";
         let last4Digits: string = "";
     
