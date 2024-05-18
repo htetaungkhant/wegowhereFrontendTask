@@ -64,8 +64,8 @@ export function AddCardScreen() {
 
         const { state } = checkCreditCardNumber(cardNumber);
         if (state === 'INVALID') {
-            setErrorTitle('Unsupported card number');
-            setErrorLabel('Please check your card number again or try another.');
+            setErrorTitle('Unsupported card');
+            setErrorLabel('Please check your card again or try another.');
             setInvalidCardModalVisible(true);
             return;
         }
