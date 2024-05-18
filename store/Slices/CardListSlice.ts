@@ -5,23 +5,19 @@ import { CardListSliceInitialState, CreditCardProps } from '@/types'
 
 const initialState: CardListSliceInitialState = {
 	cardList: [
+		/* https://docs.opn.ooo/api-testing */
+
 		// {
-		// 	cardNumber: '4234 5678 9012 3456',
+		// 	cardNumber: '4242 4242 4242 4242',		//			<====================================== Success
 		// 	cardHolder: 'John Doe',
 		// 	expiryDate: '12/24',
 		// 	cvv: '123',
 		// },
 		// {
-		// 	cardNumber: '5222 3010 7061 4774',
-		// 	cardHolder: 'John Doe',
-		// 	expiryDate: '12/24',
-		// 	cvv: '123',
-		// },
-		// {
-		// 	cardNumber: '3571 0830 8622 6551',
-		// 	cardHolder: 'John Doe',
-		// 	expiryDate: '12/24',
-		// 	cvv: '123',
+		// 	cardNumber: '4111 1111 1114 0011',		//			<====================================== Failure
+		// 	cardHolder: 'Robert',
+		// 	expiryDate: '12/26',
+		// 	cvv: '354',
 		// },
     ],
 }

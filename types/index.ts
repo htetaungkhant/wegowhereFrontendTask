@@ -42,6 +42,8 @@ export interface CreditCardProps {
 	cardHolder: string
 	expiryDate: string
 	cvv: string
+	city?: string
+	postalCode?: string
 }
 
 export interface FlatListItemSeparatorProps {
@@ -56,4 +58,12 @@ export interface FourDotsIconProps {
 export interface CreditCardInputProps {
 	value: string
 	onChangeText: (text: string) => void
+}
+
+export interface SuccessScreenProps {
+	title?: string
+}
+
+export interface FailScreenProps {
+	title?: string
 }

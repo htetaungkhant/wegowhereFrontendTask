@@ -12,6 +12,9 @@ import { useCreditCardNumberChecker } from '@/hooks/useCreditCardChecker';
 import { useIsNumericChecker } from '@/hooks/useIsNumericChecker';
 import { addCardIntoList } from '@/store';
 
+const currentYear = new Date().getFullYear().toString().slice(-2); // 2024 -> 24
+const currentMonth = new Date().getMonth() + 1; // 0-11
+
 export function AddCardScreen() {
     const [invalidCardModalVisible, setInvalidCardModalVisible] = useState<boolean>(false);
     const [errorTitle, setErrorTitle] = useState<string>('');
@@ -66,6 +69,18 @@ export function AddCardScreen() {
         if (state === 'INVALID') {
             setErrorTitle('Unsupported card');
             setErrorLabel('Please check your card again or try another.');
+            setInvalidCardModalVisible(true);
+            return;
+        }
+
+        if (
+            parseInt(expiryDate.split('/')[0]) > 12 || 
+            parseInt(expiryDate.split('/')[0]) < 1 || 
+            parseInt(expiryDate.split('/')[1]) > parseInt(currentYear) + 5 ||
+            (parseInt(expiryDate.split('/')[0]) < currentMonth && parseInt(expiryDate.split('/')[1]) <= parseInt(currentYear))
+        ){
+            setErrorTitle('Invalid expiry date');
+            setErrorLabel('Please check your expiry date again.');
             setInvalidCardModalVisible(true);
             return;
         }

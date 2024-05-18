@@ -3,15 +3,18 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { LinkButton } from '@/components/Button';
 import colors from '@/constants/colors';
+import { FailScreenProps } from '@/types';
 
-export function FailScreen() {
+export function FailScreen({ title = "Fail" }: FailScreenProps) {
     return (
         <View style={styles.container}>
             <View style={styles.innerContainer}>
                 <AntDesign name="closecircle" size={32} color={colors.errorRed} />
-                <Text style={styles.failLabel}>Fail</Text>
+                <Text style={styles.failLabel}>{title}</Text>
             </View>
-            <LinkButton title="Go back to card list" href="CardList" />
+            <View style={styles.linkButtonContainer}>
+                <LinkButton title="Go back to card list" href="CardList" />
+            </View>
         </View>
     )
 }
@@ -25,7 +28,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.background
     },
     innerContainer: {
-        marginBottom: 28,
         flexDirection: 'row',
         alignItems: 'center',
         columnGap: 8,
@@ -34,5 +36,8 @@ const styles = StyleSheet.create({
         fontSize: 32,
         fontWeight: '500',
         color: "#000",
-    },  
+    },
+    linkButtonContainer: {
+        marginTop: 28,
+    },
 })
