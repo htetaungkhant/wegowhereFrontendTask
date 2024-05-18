@@ -7,6 +7,7 @@ import { AppSliceInitialState } from '@/types'
 
 const initialState: AppSliceInitialState = {
 	appName: 'WegowhereFrontendTask',
+	omiseSecretKey: 'skey_test_5wvisdjjoqmfof5npzw',
 }
 
 export const appSlice = createSlice({

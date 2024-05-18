@@ -1,12 +1,14 @@
 // import from third-party libraries
+import { selectOmiseSecretKey } from "@/store";
 import { CreditCardProps } from "@/types";
+import { useSelector } from "react-redux";
 
 const omisePublicKey = process.env.EXPO_PUBLIC_OMISE_PUBLIC_KEY;
-const omiseSecretKey = "skey_test_5wvisdjjoqmfof5npzw";
 const createTokenUrl = process.env.EXPO_PUBLIC_OMISE_CREATE_TOKEN_URL;
 const chargeUrl = process.env.EXPO_PUBLIC_OMISE_CHARGE_URL;
 
 export const usePaymentGateway = () => {
+    const omiseSecretKey = useSelector(selectOmiseSecretKey);
     if (!omisePublicKey || !omiseSecretKey || !createTokenUrl || !chargeUrl) {
         throw new Error('Omise keys are not set');
     }

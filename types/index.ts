@@ -11,6 +11,7 @@ export type CreditCardTypes = 'Visa' | 'Mastercard' | 'JCB' | 'INVALID'
 
 export interface AppSliceInitialState {
 	appName: string
+	omiseSecretKey: string
 }
 
 export interface CardListSliceInitialState {
