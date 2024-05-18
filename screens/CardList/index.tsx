@@ -1,6 +1,8 @@
+// import from third-party libraries
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 
+// import from local files
 import { LinkButton } from '@/components/Button';
 import { CreditCard } from '@/components/CreditCard';
 import { defaultStyles } from '@/constants/styles';

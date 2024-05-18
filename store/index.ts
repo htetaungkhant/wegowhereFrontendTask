@@ -1,5 +1,7 @@
+// import from third-party libraries
 import { configureStore } from '@reduxjs/toolkit'
 
+// import from local files
 import appReducer from './Slices/AppSlice'
 import cardListReducer from './Slices/CardListSlice'
 

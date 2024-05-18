@@ -1,5 +1,7 @@
+// import from third-party libraries
 import { GestureResponderEvent } from 'react-native'
 
+// import from local files
 import { store } from '@/store'
 
 export type RootState = ReturnType<typeof store.getState>

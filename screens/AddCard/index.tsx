@@ -1,9 +1,11 @@
+// import from third-party libraries
 import { useNavigation } from '@react-navigation/native';
 import { BlurView } from 'expo-blur';
 import { useState } from 'react';
 import { GestureResponderEvent, Image, Modal, NativeSyntheticEvent, ScrollView, StyleSheet, Text, TextInput, TextInputChangeEventData, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 
+// import from local files
 import { CustomButton } from '@/components/Button';
 import { CreditCardInput } from '@/components/CreditCardInput';
 import Colors from '@/constants/colors';

@@ -1,9 +1,11 @@
+// import from third-party libraries
 import { Ionicons } from '@expo/vector-icons';
 import FeatherIcons from '@expo/vector-icons/Feather';
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
+// import from local files
 import Colors from "@/constants/colors";
 import { CustomButtonProps, HeaderAddCardButtonProps, HeaderGoBackButtonProps, LinkButtonProps } from "@/types";
 

@@ -1,6 +1,8 @@
+// import from third-party libraries
 import React, { useState } from "react";
 import { Image, NativeSyntheticEvent, StyleSheet, TextInput, TextInputChangeEventData, View } from "react-native";
 
+// import from local files
 import Colors from "@/constants/colors";
 import { useIsNumericChecker } from "@/hooks/useIsNumericChecker";
 import { CreditCardInputProps, CreditCardTypes } from "@/types";

@@ -1,8 +1,10 @@
+// import from third-party libraries
 import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
 import React, { useState } from "react";
 import { ActivityIndicator, Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+// import from local files
 import Colors from "@/constants/colors";
 import { useCreditCardNumberChecker } from "@/hooks/useCreditCardChecker";
 import { usePaymentGateway } from "@/hooks/usePaymentGateway";

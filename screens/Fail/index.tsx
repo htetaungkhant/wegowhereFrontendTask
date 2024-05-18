@@ -1,6 +1,8 @@
+// import from third-party libraries
 import { AntDesign } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 
+// import from local files
 import { LinkButton } from '@/components/Button';
 import colors from '@/constants/colors';
 import { FailScreenProps } from '@/types';

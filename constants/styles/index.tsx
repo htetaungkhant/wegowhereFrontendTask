@@ -1,5 +1,7 @@
+// import from third-party libraries
 import { StyleSheet } from 'react-native';
 
+// import from local files
 import Colors from '../colors';
 
 export const defaultStyles = StyleSheet.create({

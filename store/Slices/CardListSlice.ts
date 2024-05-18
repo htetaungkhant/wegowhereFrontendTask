@@ -1,6 +1,8 @@
+// import from third-party libraries
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
+// import from local files
 import { CardListSliceInitialState, CreditCardProps } from '@/types'
 
 const initialState: CardListSliceInitialState = {

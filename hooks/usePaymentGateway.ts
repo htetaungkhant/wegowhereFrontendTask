@@ -1,3 +1,4 @@
+// import from third-party libraries
 import { CreditCardProps } from "@/types";
 
 const omisePublicKey = process.env.EXPO_PUBLIC_OMISE_PUBLIC_KEY;
