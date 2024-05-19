@@ -17,6 +17,8 @@ npx expo run:ios
 npx expo run:android
 ```
 
+Example cards are [here](https://docs.opn.ooo/api-testing).
+
 Recommended Nodejs Version is 20.13.1 or higher. 
 
 I used "react navigation" instead of "expo router".
