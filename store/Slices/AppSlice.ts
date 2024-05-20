@@ -17,9 +17,12 @@ export const appSlice = createSlice({
 		setAppName: (state, action: PayloadAction<string>) => {
 			state.appName = action.payload
 		},
+		setOmiseSecretKey: (state, action: PayloadAction<string>) => {
+			state.omiseSecretKey = action.payload
+		},
 	},
 })
 
-export const { setAppName } = appSlice.actions
+export const { setAppName, setOmiseSecretKey } = appSlice.actions
 
 export default appSlice.reducer

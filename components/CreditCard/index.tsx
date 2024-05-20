@@ -27,7 +27,7 @@ export const CreditCard: React.FC<CreditCardProps> = ({ cardNumber, cardHolder, 
 
     const chargeRandomAmount = async () => {
         const amount = Math.floor(Math.random() * 48000) + 2000;
-        setCheckoutAmount(amount);
+        setCheckoutAmount(amount / 100);
         setLoadingModalVisible(true);
         try {
             const token: any = await createTokenPromise({
@@ -44,12 +44,12 @@ export const CreditCard: React.FC<CreditCardProps> = ({ cardNumber, cardHolder, 
                 });
 
                 const data = await response.json();
-                if (data?.failure_message) {
-                    console.error(data.failure_message);
-                    navigation.navigate('Fail');
+                if (data?.id?.startsWith('chrg_') && !data?.failure_message) {
+                    navigation.navigate('Success');
                 }
                 else {
-                    navigation.navigate('Success');
+                    console.error(data.failure_message);
+                    navigation.navigate('Fail');
                 }
             }
         } catch (error) {
