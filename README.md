@@ -24,6 +24,6 @@ To test this project at the **test mode** of Omise payment gateway, you can chec
 
 I used "react navigation" instead of "expo router" according to the useful tip of the question.
 
-Since I don't have backend solution, I just stored the data of the cards into the redux store. So, I didn't persist the data of the cards into the async storage cause of security reason. The better way is to encrypt the data of the cards before storing into the redux store.
+Since I don't have backend solution, I just stored the data of the cards into the redux store. So, I didn't persist the data of the cards into the async storage cause of security reason. The better way is to encrypt the data of the cards before storing into the redux store. And we should use own proxy backend for the omise payment gateway to completely hide the omise secret key from the attackers.
 
 If you would like to know details of this project, you can check each git commit.
