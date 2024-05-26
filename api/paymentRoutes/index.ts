@@ -10,7 +10,7 @@ const charge = async(token: string, { amount, cardNumber, cardHolder, expiryDate
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}1`,
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({ amount, cardNumber, cardHolder, expiryDate, cvv, city, postalCode }),
         });
