@@ -24,6 +24,14 @@ export const drawerCardListHeaderOptions: DrawerNavigationOptions | ((props: {
     ...drawerScreenOptions,
 }
 
+export const drawerChatHeaderOptions: DrawerNavigationOptions | ((props: {
+    route: RouteProp<ParamListBase, "Chat">;
+    navigation: any;
+}) => DrawerNavigationOptions) = { 
+    title: 'Chatting Room',
+    ...drawerScreenOptions,
+}
+
 export const addCardHeaderOptions: NativeStackNavigationOptions | ((props: {
     route: RouteProp<ParamListBase, "AddCard">;
     navigation: any;
