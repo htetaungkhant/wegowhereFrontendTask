@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { CustomDrawerContent } from '@/components/CustomDrawerContent';
 import { AddCardScreen } from '@/screens/AddCard';
 import { CardListScreen } from '@/screens/CardList';
+import { ChatScreen } from '@/screens/Chat';
 import { FailScreen } from "@/screens/Fail";
 import { LoginScreen } from '@/screens/LogIn';
 import { RegisterScreen } from '@/screens/Register';
@@ -16,6 +17,7 @@ import { selectUserToken } from '@/store';
 import {
     addCardHeaderOptions,
     drawerCardListHeaderOptions,
+    drawerChatHeaderOptions,
     failHeaderOptions,
     logInHeaderOptions,
     registerHeaderOptions,
@@ -30,6 +32,7 @@ const DrawerCardList = () => {
     return (
         <Drawer.Navigator initialRouteName="DrawerCardList" drawerContent={props => <CustomDrawerContent {...props} />}>
             <Drawer.Screen name="DrawerCardList" component={CardListScreen} options={drawerCardListHeaderOptions} />
+            <Drawer.Screen name="Chat" component={ChatScreen} options={drawerChatHeaderOptions} />
         </Drawer.Navigator>
     )
 }

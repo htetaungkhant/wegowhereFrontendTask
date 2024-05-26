@@ -128,3 +128,5 @@ export interface FailScreenProps {
 export interface LogInScreenProps {}
 
 export interface RegisterScreenProps {}
+
+export interface ChatScreenProps {}
