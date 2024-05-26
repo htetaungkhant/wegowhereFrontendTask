@@ -7,7 +7,6 @@ import { AppSliceInitialState } from '@/types'
 
 const initialState: AppSliceInitialState = {
 	appName: 'WegowhereFrontendTask',
-	omiseSecretKey: 'skey_test_5wvisdjjoqmfof5npzw',
 }
 
 export const appSlice = createSlice({
@@ -17,12 +16,9 @@ export const appSlice = createSlice({
 		setAppName: (state, action: PayloadAction<string>) => {
 			state.appName = action.payload
 		},
-		setOmiseSecretKey: (state, action: PayloadAction<string>) => {
-			state.omiseSecretKey = action.payload
-		},
 	},
 })
 
-export const { setAppName, setOmiseSecretKey } = appSlice.actions
+export const { setAppName } = appSlice.actions
 
 export default appSlice.reducer

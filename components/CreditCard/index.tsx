@@ -16,7 +16,7 @@ export const CreditCard: React.FC<CreditCardProps> = ({ cardNumber, cardHolder, 
     const [loadingModalVisible, setLoadingModalVisible] = useState<boolean>(false);
 
     const navigation = useNavigation<any>();
-    const { createTokenPromise, chargeAmount } = usePaymentGateway();
+    const { chargeAmountAsync } = usePaymentGateway();
     const { check } = useCreditCardNumberChecker();
 
     const { state, last4Digits } = check(cardNumber);
@@ -30,27 +30,18 @@ export const CreditCard: React.FC<CreditCardProps> = ({ cardNumber, cardHolder, 
         setCheckoutAmount(amount / 100);
         setLoadingModalVisible(true);
         try {
-            const token: any = await createTokenPromise({
+            const chargeResult = await chargeAmountAsync({
+                amount,
                 cardHolder,
                 cardNumber,
                 cvv,
                 expiryDate,
             });
 
-            if (token?.id?.startsWith('tokn_')) {
-                const response = await chargeAmount({
-                    amount,
-                    cardToken: token.id,
-                });
-
-                const data = await response.json();
-                if (data?.id?.startsWith('chrg_') && !data?.failure_message) {
-                    navigation.navigate('Success');
-                }
-                else {
-                    console.error(data.failure_message);
-                    navigation.navigate('Fail');
-                }
+            if (chargeResult.status === 200) {
+                navigation.navigate('Success');
+            } else {
+                navigation.navigate('Fail', { message: chargeResult.message });
             }
         } catch (error) {
             console.error(error);
