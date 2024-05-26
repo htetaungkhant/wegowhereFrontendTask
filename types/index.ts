@@ -30,6 +30,7 @@ export interface ApiError {
 }
 
 export interface ApiResponse {
+	code?: number
 	status: number
 	message: string
 }

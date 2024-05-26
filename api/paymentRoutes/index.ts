@@ -10,7 +10,7 @@ const charge = async(token: string, { amount, cardNumber, cardHolder, expiryDate
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${token}1`,
             },
             body: JSON.stringify({ amount, cardNumber, cardHolder, expiryDate, cvv, city, postalCode }),
         });
@@ -21,7 +21,7 @@ const charge = async(token: string, { amount, cardNumber, cardHolder, expiryDate
             return data;
         } else {
             console.error('Error while making payment', data);
-            return { status: data?.status || response?.status, message: data?.message || 'Error while making payment' };
+            return { status: data?.code || data?.status || response?.status, message: data?.message || 'Error while making payment' };
         }
     } catch (error: any) {
         console.error(`${error?.staus || 500} Error while making payment`, error);
