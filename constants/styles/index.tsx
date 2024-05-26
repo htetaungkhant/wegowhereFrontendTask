@@ -14,6 +14,7 @@ export const defaultStyles = StyleSheet.create({
   headerTitleStyle: {
     fontSize: 17,
     fontWeight: '700',
+    color: '#000',
   },
   block: {
     paddingVertical: 2,

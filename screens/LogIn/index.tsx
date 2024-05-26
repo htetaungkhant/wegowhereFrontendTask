@@ -9,7 +9,7 @@ import { login } from '@/api/authRoutes';
 import { CustomButton, LinkButton } from '@/components/Button';
 import Colors from '@/constants/colors';
 import { defaultStyles } from '@/constants/styles';
-import { setToken } from '@/store';
+import { setSignIn } from '@/store';
 import { LogInScreenProps } from '@/types';
 
 export function LoginScreen({}: LogInScreenProps) {
@@ -37,7 +37,7 @@ export function LoginScreen({}: LogInScreenProps) {
             setLoading(false);
 
             if ('data' in result && result.status === 200) {
-                dispatch(setToken(result.data.token));
+                dispatch(setSignIn(result.data));
             } else {
                 setMessage(result?.message || 'Login failed');
                 setFailModal(true);

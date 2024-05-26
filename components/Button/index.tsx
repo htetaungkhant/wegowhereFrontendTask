@@ -32,24 +32,24 @@ export const LinkButton: React.FC<LinkButtonProps> = ({ title, href, viewStyle, 
     );
 }
 
-export const HeaderAddCardButton: React.FC<HeaderAddCardButtonProps> = ({}) => {
+export const HeaderAddCardButton: React.FC<HeaderAddCardButtonProps> = ({ viewStyle, textStyle }) => {
     const navigation = useNavigation();
 
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('AddCard' as never)}>
-            <Text style={styles.headerAddCardButton}>
+        <TouchableOpacity onPress={() => navigation.navigate('AddCard' as never)} style={[styles.headerAddCardButton, viewStyle]}>
+            <Text style={[styles.headerAddCardButtonText, textStyle]}>
                 <FeatherIcons name="plus" size={28} />
             </Text>
         </TouchableOpacity>
     );
 }
 
-export const HeaderGoBackButton: React.FC<HeaderGoBackButtonProps> = ({}) => {
+export const HeaderGoBackButton: React.FC<HeaderGoBackButtonProps> = ({ viewStyle, textStyle }) => {
     const navigation = useNavigation();
 
     return (
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={styles.headerGoBackButton}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={[styles.headerGoBackButton, viewStyle]}>
+            <Text style={[styles.headerGoBackButtonText, textStyle]}>
                 <Ionicons name="chevron-back" size={28} color="black" />
             </Text>
         </TouchableOpacity>
@@ -77,5 +77,7 @@ const styles = StyleSheet.create({
         fontWeight: '500',
     },
     headerAddCardButton: {},
+    headerAddCardButtonText: {},
     headerGoBackButton: {},
+    headerGoBackButtonText: {},
 })

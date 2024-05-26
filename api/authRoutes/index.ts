@@ -1,3 +1,4 @@
+// import from local files
 import { loginApiRequest, loginApiResponse, registerApiRequest, registerApiResponse } from "@/types";
 
 const backendApi = process.env.EXPO_PUBLIC_BACKEND_API;

@@ -11,10 +11,12 @@ export type CreditCardTypes = 'Visa' | 'Mastercard' | 'JCB' | 'INVALID'
 
 export interface AppSliceInitialState {
 	appName: string
-	omiseSecretKey: string
 }
 
 export interface UserSliceInitialState {
+	id: string
+	name: string
+	email: string
 	token: string
 }
 
@@ -43,6 +45,10 @@ export interface registerApiRequest {
 	password: string
 }
 
+export interface chargeApiRequest extends CreditCardProps {
+	amount: number
+}
+
 export interface loginApiResponse extends ApiResponse {
 	data: {
 		id: string
@@ -60,6 +66,10 @@ export interface registerApiResponse extends ApiResponse {
 	}
 }
 
+export interface chargeApiResponse extends ApiResponse {
+	data: any
+}
+
 export interface CustomButtonProps {
 	title: string
 	onPress?: ((event: GestureResponderEvent) => void)
@@ -74,9 +84,15 @@ export interface LinkButtonProps {
 	viewStyle?: StyleProp<ViewStyle>
 }
 
-export interface HeaderAddCardButtonProps {}
+export interface HeaderAddCardButtonProps {
+	textStyle?: StyleProp<TextStyle>
+	viewStyle?: StyleProp<ViewStyle>
+}
 
-export interface HeaderGoBackButtonProps {}
+export interface HeaderGoBackButtonProps {
+	textStyle?: StyleProp<TextStyle>
+	viewStyle?: StyleProp<ViewStyle>
+}
 
 export interface CreditCardProps {
 	cardNumber: string
