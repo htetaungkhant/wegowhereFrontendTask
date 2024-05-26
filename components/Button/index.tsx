@@ -12,38 +12,22 @@ import { CustomButtonProps, HeaderAddCardButtonProps, HeaderGoBackButtonProps, L
 export const CustomButton: React.FC<CustomButtonProps> = ({ 
     title, 
     onPress, 
-    width, 
-    height, 
-    fontSize = 16,
-    borderRadius = 28,
-    paddingHorizontal = 16, 
-    paddingVertical = 16, 
-    backgroundColor= Colors.primary,
-    color = '#fff',
+    viewStyle,
+    textStyle,
 }) => {
     return (
-        <TouchableOpacity onPress={onPress}>
-            <Text style={{ 
-                ...styles.customButton, 
-                width, 
-                height, 
-                fontSize, 
-                borderRadius, 
-                paddingHorizontal, 
-                paddingVertical, 
-                color, 
-                backgroundColor 
-            }}>{title}</Text>
+        <TouchableOpacity onPress={onPress} style={[styles.customButton, viewStyle]}>
+            <Text style={[styles.customButtonTitle, textStyle]}>{title}</Text>
         </TouchableOpacity>
     );
 }
 
-export const LinkButton: React.FC<LinkButtonProps> = ({ title, href }) => {
+export const LinkButton: React.FC<LinkButtonProps> = ({ title, href, viewStyle, textStyle }) => {
     const navigation = useNavigation();
 
     return (
-        <TouchableOpacity onPress={() => navigation.navigate(href as never)}>
-            <Text style={styles.linkButton}>{title}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate(href as never)} style={[styles.linkButton, viewStyle]}>
+            <Text style={[styles.linkButtonText, textStyle]}>{title}</Text>
         </TouchableOpacity>
     );
 }
@@ -78,15 +62,19 @@ const styles = StyleSheet.create({
         padding: 16,
         borderRadius: 28,
         overflow: 'hidden',
-        textAlign: 'center',
+        backgroundColor: Colors.primary,
+    },
+    customButtonTitle: {
         color: '#fff',
         fontSize: 16,
         fontWeight: '700',
+        textAlign: 'center',
     },
-    linkButton: {
+    linkButton: {},
+    linkButtonText: {
+        color: Colors.primary,
         fontSize: 18,
         fontWeight: '500',
-        color: Colors.primary
     },
     headerAddCardButton: {},
     headerGoBackButton: {},

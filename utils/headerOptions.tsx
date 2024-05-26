@@ -40,3 +40,17 @@ export const failHeaderOptions: NativeStackNavigationOptions | ((props: {
 }) => NativeStackNavigationOptions) = {
     headerShown: false,
 }
+
+export const logInHeaderOptions: NativeStackNavigationOptions | ((props: {
+    route: RouteProp<ParamListBase, "LogIn">;
+    navigation: any;
+}) => NativeStackNavigationOptions) = {
+    headerShown: false,
+}
+
+export const registerHeaderOptions: NativeStackNavigationOptions | ((props: {
+    route: RouteProp<ParamListBase, "Register">;
+    navigation: any;
+}) => NativeStackNavigationOptions) = {
+    headerShown: false,
+}

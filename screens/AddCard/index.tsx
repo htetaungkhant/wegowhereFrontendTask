@@ -2,7 +2,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { BlurView } from 'expo-blur';
 import { useState } from 'react';
-import { GestureResponderEvent, Image, Modal, NativeSyntheticEvent, ScrollView, StyleSheet, Text, TextInput, TextInputChangeEventData, View } from 'react-native';
+import { GestureResponderEvent, Image, KeyboardAvoidingView, Modal, NativeSyntheticEvent, Platform, ScrollView, StyleSheet, Text, TextInput, TextInputChangeEventData, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 // import from local files
@@ -97,52 +97,55 @@ export function AddCardScreen() {
 
     return (
         <>
-            <ScrollView style={{ ...defaultStyles.container, paddingVertical: 0 }} contentContainerStyle={styles.container}>
-                <View style={styles.innerTopContainer}>
-                    <View style={defaultStyles.block}>
-                        <Text style={styles.label}>ATM/Debit/Credit card number</Text>
-                        <CreditCardInput value={cardNumber} onChangeText={(value) => setCardNumber(value)} />
-                    </View>
-                    <View style={defaultStyles.block}>
-                        <Text style={styles.label}>Name on Card</Text>
-                        <TextInput 
-                            value={cardName}
-                            onChange={(e) => setCardName(e.nativeEvent.text)}
-                            placeholder="Ty Lee" 
-                            maxLength={50}
-                            style={{ ...defaultStyles.input }}
-                        />
-                    </View>
-                    <View style={styles.row}>
-                        <View style={{ ...defaultStyles.block, flex: 1 }}>
-                            <Text style={styles.label}>Expiry date</Text>
+            <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.keyboardAvoidContainer} keyboardVerticalOffset={100}>
+                <ScrollView style={{ ...defaultStyles.container, paddingVertical: 0 }} contentContainerStyle={styles.container}>
+                    <View style={styles.innerTopContainer}>
+                        <View style={defaultStyles.block}>
+                            <Text style={styles.label}>ATM/Debit/Credit card number</Text>
+                            <CreditCardInput value={cardNumber} onChangeText={(value) => setCardNumber(value)} />
+                        </View>
+                        <View style={defaultStyles.block}>
+                            <Text style={styles.label}>Name on Card</Text>
                             <TextInput 
-                                value={expiryDate}
-                                onChange={onExpiryDateChange}
-                                placeholder="MM/YY" 
-                                keyboardType="number-pad"
-                                maxLength={5} 
+                                value={cardName}
+                                onChange={(e) => setCardName(e.nativeEvent.text)}
+                                placeholder="Ty Lee" 
+                                maxLength={50}
                                 style={{ ...defaultStyles.input }}
                             />
                         </View>
-                        <View style={{ ...defaultStyles.block, flex: 1 }}>
-                            <Text style={styles.label}>CVV</Text>
-                            <TextInput 
-                                value={cvv}
-                                onChange={onCvvChange}
-                                placeholder="123"
-                                keyboardType="number-pad" 
-                                maxLength={3}
-                                style={{ ...defaultStyles.input }}
-                            />
+                        <View style={styles.row}>
+                            <View style={{ ...defaultStyles.block, flex: 1 }}>
+                                <Text style={styles.label}>Expiry date</Text>
+                                <TextInput 
+                                    value={expiryDate}
+                                    onChange={onExpiryDateChange}
+                                    placeholder="MM/YY" 
+                                    keyboardType="number-pad"
+                                    maxLength={5} 
+                                    style={{ ...defaultStyles.input }}
+                                />
+                            </View>
+                            <View style={{ ...defaultStyles.block, flex: 1 }}>
+                                <Text style={styles.label}>CVV</Text>
+                                <TextInput 
+                                    value={cvv}
+                                    onChange={onCvvChange}
+                                    placeholder="123"
+                                    keyboardType="number-pad" 
+                                    maxLength={3}
+                                    style={{ ...defaultStyles.input }}
+                                />
+                            </View>
                         </View>
+                        <Image resizeMode='contain' source={require('@/assets/secure_payment.png')} style={styles.securePaymentImage} />
                     </View>
-                    <Image resizeMode='contain' source={require('@/assets/secure_payment.png')} style={styles.securePaymentImage} />
-                </View>
-                <View style={styles.innerBottomContainer}>
-                    <CustomButton title="Add Card" onPress={onAddCard} />
-                </View>
-            </ScrollView>
+                    <View style={styles.middleBlankBlock} />
+                    <View style={styles.innerBottomContainer}>
+                        <CustomButton title="Add Card" onPress={onAddCard} />
+                    </View>
+                </ScrollView>
+            </KeyboardAvoidingView>
             <Modal
                 animationType="none"
                 transparent={true}
@@ -157,10 +160,14 @@ export function AddCardScreen() {
                         <Text style={styles.errorLabel}>{errorLabel}</Text>
                         <CustomButton 
                             title="OK" 
-                            onPress={() => setInvalidCardModalVisible(false)} 
-                            paddingHorizontal={20}
-                            paddingVertical={6}
-                            borderRadius={12}
+                            onPress={() => setInvalidCardModalVisible(false)}
+                            viewStyle={{ 
+                                paddingHorizontal: 20, 
+                                paddingVertical: 6, 
+                                borderRadius: 12, 
+                                backgroundColor: Colors.errorRed, 
+                                marginTop: 20
+                            }}
                         />
                     </View>
                 </BlurView>
@@ -174,11 +181,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: 'rgba(255, 255, 255, 0.8)',
     },
     modalView: {
         width: '85%',
-        rowGap: 20,
+        rowGap: 8,
         borderColor: Colors.errorRed,
         borderWidth: 1,
         borderRadius: 20,
@@ -202,16 +208,21 @@ const styles = StyleSheet.create({
     errorLabel: {
         width: '80%',
         fontSize: 14,
-        color: Colors.darkGray,
+        color: "#000",
         textAlign: 'center',
+    },
+    keyboardAvoidContainer: {
+        flex: 1,
     },
     container: {
         flexGrow: 1,
         paddingTop: 16,
-        justifyContent: 'space-between',
     },
     innerTopContainer: {
         rowGap: 20,
+    },
+    middleBlankBlock: {
+        flex: 1,
     },
     innerBottomContainer: {
         paddingVertical: 20,

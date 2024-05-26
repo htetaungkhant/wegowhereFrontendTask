@@ -1,5 +1,5 @@
 // import from third-party libraries
-import { GestureResponderEvent } from 'react-native'
+import { GestureResponderEvent, StyleProp, TextStyle, ViewStyle } from 'react-native'
 
 // import from local files
 import { store } from '@/store'
@@ -14,26 +14,64 @@ export interface AppSliceInitialState {
 	omiseSecretKey: string
 }
 
+export interface UserSliceInitialState {
+	token: string
+}
+
 export interface CardListSliceInitialState {
 	cardList: CreditCardProps[]
+}
+
+export interface ApiError {
+	statusCode: number
+	message: string
+}
+
+export interface ApiResponse {
+	status: number
+	message: string
+}
+
+export interface loginApiRequest {
+	email: string
+	password: string
+}
+
+export interface registerApiRequest {
+	name: string
+	email: string
+	password: string
+}
+
+export interface loginApiResponse extends ApiResponse {
+	data: {
+		id: string
+		name: string
+		email: string
+		token: string
+	}
+}
+
+export interface registerApiResponse extends ApiResponse {
+	data: {
+		id: string
+		name: string
+		email: string
+	}
 }
 
 export interface CustomButtonProps {
 	title: string
 	onPress?: ((event: GestureResponderEvent) => void)
-	width?: number
-	height?: number
-	fontSize?: number
-	borderRadius?: number
-	paddingVertical?: number
-	paddingHorizontal?: number
-	backgroundColor?: string
-	color?: string
+	textStyle?: StyleProp<TextStyle>
+	viewStyle?: StyleProp<ViewStyle>
 }
 
 export interface LinkButtonProps {
 	title: string
 	href: string
+	textStyle?: StyleProp<TextStyle>
+	viewStyle?: StyleProp<ViewStyle>
 }
 
 export interface HeaderAddCardButtonProps {}
@@ -70,3 +108,7 @@ export interface SuccessScreenProps {
 export interface FailScreenProps {
 	title?: string
 }
+
+export interface LogInScreenProps {}
+
+export interface RegisterScreenProps {}
