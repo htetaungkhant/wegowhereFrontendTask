@@ -24,8 +24,8 @@ const charge = async(token: string, { amount, cardNumber, cardHolder, expiryDate
             return { status: data?.code || data?.status || response?.status, message: data?.message || 'Error while making payment' };
         }
     } catch (error: any) {
-        console.error(`${error?.staus || 500} Error while making payment`, error);
-        return { status: error?.status || 500, message: `${error?.staus || 500} Error while making payment`};
+        console.error(`${error?.status || 500} Error while making payment`, error);
+        return { status: error?.status || 500, message: `${error?.status || 500} Error while making payment`};
     }
 }
 

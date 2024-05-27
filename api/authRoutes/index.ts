@@ -22,8 +22,8 @@ const login = async({ email, password }: loginApiRequest) => {
             return { status: response.status, message: data?.message || 'Error while logging in' };
         }
     } catch (error: any) {
-        console.error(`${error?.staus || 500} Error while logging in`, error);
-        return { status: error?.status || 500, message: `${error?.staus || 500} Error while logging in`};
+        console.error(`${error?.status || 500} Error while logging in`, error);
+        return { status: error?.status || 500, message: `${error?.status || 500} Error while logging in`};
     }
 }
 
@@ -46,8 +46,8 @@ const register = async({ name, email, password }: registerApiRequest) => {
             return { status: data?.status || response?.status, message: data?.message || 'Error while registering' };
         }
     } catch (error: any) {
-        console.error(`${error?.staus || 500} Error while registering`, error);
-        return { status: error?.status || 500, message: `${error?.staus || 500} Error while registering`};
+        console.error(`${error?.status || 500} Error while registering`, error);
+        return { status: error?.status || 500, message: `${error?.status || 500} Error while registering`};
     }
 }
 
