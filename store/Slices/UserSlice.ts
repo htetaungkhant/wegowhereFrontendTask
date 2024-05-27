@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
 // import from local files
-import { UserSliceInitialState } from '@/types'
+import { UserSliceInitialState, contactUser } from '@/types'
 import { deleteValueForAsync, getValueFor, save } from '@/utils/secureStore'
 
 const initialState: UserSliceInitialState = {
@@ -11,6 +11,7 @@ const initialState: UserSliceInitialState = {
 	name: getValueFor('userName') || '',
 	email: getValueFor('userEmail') || '',
 	token: getValueFor('userToken') || '',
+	contactList: [],
 }
 
 export const userSlice = createSlice({
@@ -42,6 +43,9 @@ export const userSlice = createSlice({
 			state.name = action.payload.name
 			state.email = action.payload.email
 			state.token = action.payload.token
+		},
+		setContactList: (state, action: PayloadAction<contactUser[]>) => {
+			state.contactList = action.payload
 		},
 		removeId: (state) => {
 			deleteValueForAsync('userId')
@@ -78,6 +82,7 @@ export const {
 	setEmail, 
 	setToken, 
 	setSignIn,
+	setContactList,
 	removeId, 
 	removeName,
 	removeEmail, 

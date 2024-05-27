@@ -24,11 +24,11 @@ export const drawerCardListHeaderOptions: DrawerNavigationOptions | ((props: {
     ...drawerScreenOptions,
 }
 
-export const drawerChatHeaderOptions: DrawerNavigationOptions | ((props: {
-    route: RouteProp<ParamListBase, "Chat">;
+export const drawerFriendListHeaderOptions: DrawerNavigationOptions | ((props: {
+    route: RouteProp<ParamListBase, "FriendList">;
     navigation: any;
 }) => DrawerNavigationOptions) = { 
-    title: 'Chatting Room',
+    title: 'Friends',
     ...drawerScreenOptions,
 }
 

@@ -18,6 +18,7 @@ export interface UserSliceInitialState {
 	name: string
 	email: string
 	token: string
+	contactList: contactUser[]
 }
 
 export interface CardListSliceInitialState {
@@ -71,6 +72,16 @@ export interface chargeApiResponse extends ApiResponse {
 	data: any
 }
 
+export interface contactUser {
+	id: string
+	name: string
+	email: string
+}
+
+export interface getAllUsersApiResponse extends ApiResponse {
+	data: contactUser[]
+}
+
 export interface CustomButtonProps {
 	title: string
 	onPress?: ((event: GestureResponderEvent) => void)
@@ -118,6 +129,11 @@ export interface CreditCardInputProps {
 	onChangeText: (text: string) => void
 }
 
+export interface LoadingModalProps {
+	loading: boolean
+	description?: string
+}
+
 export interface SuccessScreenProps {
 	title?: string
 }
@@ -130,4 +146,4 @@ export interface LogInScreenProps {}
 
 export interface RegisterScreenProps {}
 
-export interface ChatScreenProps {}
+export interface FriendListScreenProps {}
