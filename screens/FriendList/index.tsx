@@ -1,5 +1,5 @@
 // import from third-party libraries
-import { EvilIcons, Ionicons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { useEffect, useState } from 'react';
 import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -10,19 +10,16 @@ import { getAllUsers } from '@/api/userRoutes';
 import { LoadingModal } from '@/components/LoadingModal';
 import Colors from '@/constants/colors';
 import { defaultStyles } from '@/constants/styles';
-import { selectContactList, selectUserToken, setContactList } from '@/store';
-import { FriendListScreenProps, contactUser } from '@/types';
+import { selectFriendList, selectUserToken, setFriendList } from '@/store';
+import { FriendListScreenProps, friend } from '@/types';
 
-const FriendMenuItem = ({ id, name, email }: contactUser) => {
+const FriendMenuItem = ({ id, name, email }: friend) => {
     return (
         <TouchableOpacity style={styles.friendMenuItem}>
-            <EvilIcons name="user" size={56} color="#fff" />
-            <View style={styles.friendMenuItemRight}>
-                <Text style={styles.friendName}>{name}</Text>
-                <View style={styles.chatIconContainer}>
-                    <Ionicons name="chatbubble-ellipses-outline" size={32} color="#fff" />
-                </View>
+            <View style={styles.userIconContainer}>
+                <EvilIcons name="user" size={32} color="#fff" />
             </View>
+            <Text style={styles.friendName}>{name}</Text>
         </TouchableOpacity>
     )
 };
@@ -33,14 +30,14 @@ export function FriendListScreen({}: FriendListScreenProps) {
 
     const dispatch = useDispatch();
     const token = useSelector(selectUserToken);
-    const contactList = useSelector(selectContactList);
+    const contactList = useSelector(selectFriendList);
 
     useEffect(() => {
         const fetchAllUsers = async() => {
             const data = await getAllUsers(token);
 
             if (data.status === 200 && 'data' in data) {
-                dispatch(setContactList(data.data));
+                dispatch(setFriendList(data.data));
                 setLoading(false);
             } else {
                 setLoading(false);
@@ -79,8 +76,8 @@ export function FriendListScreen({}: FriendListScreenProps) {
                     ItemSeparatorComponent={() => <View style={styles.itemSeparatorComponent} />}
                 />
                 : 
-                <View>
-                    <Text>No contacts found</Text>
+                <View style={styles.emptyContainer}>
+                    <Text style={styles.emptyText}>Currently, you have no friends.</Text>
                 </View>
             }
         </View>
@@ -114,7 +111,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     itemSeparatorComponent: {
-        height: 8, 
+        height: 4, 
         backgroundColor: '#fff',
     },
     friendMenuItem: {
@@ -124,21 +121,29 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 8,
-        backgroundColor: Colors.primary
+        columnGap: 8,
     },
-    friendMenuItemRight: {
-        flex: 1,
-        flexDirection: 'row',
+    userIconContainer: {
+        width: 44,
+        height: 44,
+        justifyContent: 'center',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        borderRadius: 22,
+        backgroundColor: Colors.primary,
     },
     friendName: {
         fontSize: 16,
         fontWeight: '700',
-        color: "#fff",
+        color: "#000",
     },
-    chatIconContainer: {
-        paddingHorizontal: 8,
-        paddingVertical: 0,
+    emptyContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    emptyText: {
+        fontSize: 16,
+        fontWeight: '500',
+        color: Colors.primary,
     },
 });
