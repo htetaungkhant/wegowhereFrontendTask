@@ -15,8 +15,8 @@ export const drawerScreenOptions: DrawerNavigationOptions = {
     drawerActiveTintColor: colors.primary,
 }
 
-export const drawerCardListHeaderOptions: DrawerNavigationOptions | ((props: {
-    route: RouteProp<ParamListBase, "DrawerCardList">;
+export const CardListHeaderOptions: DrawerNavigationOptions | ((props: {
+    route: RouteProp<ParamListBase, "CardList">;
     navigation: any;
 }) => DrawerNavigationOptions) = { 
     title: 'Cards',
@@ -43,8 +43,8 @@ export const addCardHeaderOptions: NativeStackNavigationOptions | ((props: {
     headerLeft: () => <HeaderGoBackButton />,
 }
 
-export const stackCardListHeaderOptions: NativeStackNavigationOptions | ((props: {
-    route: RouteProp<ParamListBase, "CardList">;
+export const drawerNavigationStackOptions: NativeStackNavigationOptions | ((props: {
+    route: RouteProp<ParamListBase, "DrawerNavigation">;
     navigation: any;
 }) => NativeStackNavigationOptions) = { 
     headerShown: false,

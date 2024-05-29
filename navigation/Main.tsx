@@ -7,8 +7,8 @@ import { FailScreen } from "@/screens/Fail";
 import { SuccessScreen } from "@/screens/Success";
 import {
     addCardHeaderOptions,
+    drawerNavigationStackOptions,
     failHeaderOptions,
-    stackCardListHeaderOptions,
     successHeaderOptions
 } from '@/utils/headerOptions';
 import { DrawerNavigation } from './DrawerNavigation';
@@ -17,11 +17,11 @@ const Stack = createNativeStackNavigator();
 
 export const Main = () => {
     return (
-        <Stack.Navigator initialRouteName="CardList">
+        <Stack.Navigator initialRouteName="DrawerNavigation">
             <Stack.Screen 
-                name="CardList" 
+                name="DrawerNavigation" 
                 component={DrawerNavigation} 
-                options={stackCardListHeaderOptions}
+                options={drawerNavigationStackOptions}
             />
             <Stack.Screen 
                 name="AddCard" 

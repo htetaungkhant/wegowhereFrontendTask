@@ -5,14 +5,14 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawerContent } from '@/components/CustomDrawerContent';
 import { CardListScreen } from '@/screens/CardList';
 import { FriendListScreen } from '@/screens/FriendList';
-import { drawerCardListHeaderOptions, drawerFriendListHeaderOptions } from '@/utils/headerOptions';
+import { CardListHeaderOptions, drawerFriendListHeaderOptions } from '@/utils/headerOptions';
 
 const Drawer = createDrawerNavigator();
 
 export const DrawerNavigation = () => {
     return (
-        <Drawer.Navigator initialRouteName="DrawerCardList" drawerContent={props => <CustomDrawerContent {...props} />}>
-            <Drawer.Screen name="DrawerCardList" component={CardListScreen} options={drawerCardListHeaderOptions} />
+        <Drawer.Navigator initialRouteName="CardList" drawerContent={props => <CustomDrawerContent {...props} />}>
+            <Drawer.Screen name="CardList" component={CardListScreen} options={CardListHeaderOptions} />
             <Drawer.Screen name="FriendList" component={FriendListScreen} options={drawerFriendListHeaderOptions} />
         </Drawer.Navigator>
     )

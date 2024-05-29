@@ -15,3 +15,9 @@ export interface LogInScreenProps {}
 export interface RegisterScreenProps {}
 
 export interface FriendListScreenProps {}
+
+export interface ChatRoomScreenProps {
+	receiverId: string
+	receiverName: string
+	receiverEmail: string
+}

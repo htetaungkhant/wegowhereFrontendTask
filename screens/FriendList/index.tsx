@@ -17,9 +17,13 @@ const FriendMenuItem = ({ id, name, email }: friend) => {
     return (
         <TouchableOpacity style={styles.friendMenuItem}>
             <View style={styles.userIconContainer}>
-                <EvilIcons name="user" size={32} color="#fff" />
+                <View style={styles.userIcon}>
+                    <EvilIcons name="user" size={32} color="#fff" />
+                </View>
             </View>
-            <Text style={styles.friendName}>{name}</Text>
+            <View style={styles.friendMenuItemRight}>
+                <Text style={styles.friendName}>{name}</Text>
+            </View>
         </TouchableOpacity>
     )
 };
@@ -111,25 +115,35 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     itemSeparatorComponent: {
-        height: 4, 
+        height: 1, 
         backgroundColor: '#fff',
     },
     friendMenuItem: {
         width: '100%',
-        paddingHorizontal: 0,
-        paddingVertical: 4,
+        padding: 0,
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 8,
         columnGap: 8,
     },
     userIconContainer: {
-        width: 44,
-        height: 44,
+        paddingVertical: 12,
+    },
+    userIcon: {
+        width: 40,
+        height: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 22,
+        borderRadius: 20,
         backgroundColor: Colors.primary,
+    },
+    friendMenuItemRight: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        height: '100%',
+        borderBottomWidth: 1,
+        borderBottomColor: Colors.gray,
     },
     friendName: {
         fontSize: 16,
